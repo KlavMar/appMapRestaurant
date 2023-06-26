@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+{% block title %}<title>Restaurant Bordeaux Top 500</title> {% endblock %} 
+{% load static %}
+{% block content %}
+
+<style>
+:root{
+    --bg-dark:linear-gradient(45deg,#fbbf24,#854d0e);
+    --nav-link-hover:#854d0e;
+}
+
+.content-nav{
+    background:linear-gradient(135deg,#fbbf24 5%,#854d0e)
+}
+:root{
+    --bg-dark:#fbbf24;
+    --color-link:#000;
+    --color-link-hover:#fff7ed;
+
+    /* color link nav */
+    --color-nav-link:#fff;
+    --color-nav-link-hover:#fff7ed;
+}
+
+#tag-search{
+    display: none !important;
+  }
+.content-graph >div {
+    height: 100vh !important
+}
+.content-container-dash{
+display: flex;
+flex-flow: column wrap;
+justify-content:space-between;
+}
+.container-nav-dash-filter{
+max-width: 98vw;
+
+}
+.container-dropdown-filter{
+display: flex;
+flex-flow: column;
+justify-content: space-between;
+background:var(--bg-dark);
+border-radius:0.5em;
+}
+
+.dropdown-item{
+padding:0.25 0.5em;
+margin:0.75em auto;
+font-weight: 700;
+}
+
+.container-map{
+width: 100vw;
+height: 60vh;
+display: flex;
+border-radius: 2em;
+margin-left: -1em;
+padding: 0.5em;
+flex-flow: column;
+}
+div #table{
+max-width: 100vw;
+overflow: auto;
+}
+.content-table{
+display: table;
+margin:0.25em;
+padding:0.25em;
+max-width: 100vw;
+overflow-x:scroll;
+}
+
+@media screen and (min-width:1200px) {
+
+.container-map{
+    width: 100vw;
+    height: 30vh;
+    margin:0;
+    padding: 0;
+}
+.container-dropdown-filter{
+display: flex;
+flex-flow: row;
+justify-content: space-around;
+}
+.container-dropdown-filter > div{
+margin:1em;
+padding:1em;
+width: 30vw;
+}
+
+.column-header-name, .column-actions{
+font-size: 1.5em;
+}
+}
+   
+
+</style>
+
+<div class="content-graph lg:col-span-12  md:col-span-12">
+{% load plotly_dash %}
+
+
+
+    {%plotly_app name="restaurant_map" ratio=1%}
+
+
+{% endblock %}
+</div>
